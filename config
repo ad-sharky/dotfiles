@@ -1,0 +1,301 @@
+#########################################################
+#							                                          #
+#	Config file for i3vm 05.01.2015 22:47 v1	            #
+#							                                          #
+#########################################################
+
+
+############################################
+################# Definitions ##############
+set $confpath   /home/ad/.i3
+set $mod Mod4
+set $wszero     0
+set $WS1		1:
+set $WS2		2:
+set $WS3		3:
+set $WS4		4:
+set $WS5		5:
+set $WS6		6:
+set $WS7		7:
+set $WS8		8:
+set $WS9		9:
+set $wsf        10
+set $wsf01      
+set $wsf02      TRASH
+set $wsf03      MAIL
+set $fnt 		pango:Tewi 8
+#set $fnt1		pango:Droid Sans 8px
+#set $fnt2		pango:Inconsolata 8
+#set $fnt3		pango:FontAwesome 8
+set $back1 #131313
+set $fore1 #959da0
+set $fore2 #a0a0a0
+set $back2 #303030
+
+font $fnt
+# $fnt1, $fnt2, $fnt3
+
+
+############################################
+####### New window default border ##########
+#new_window 1pixel
+new_window pixel 2
+#new_float 1pixel
+new_float pixel 2
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Back and Forth
+workspace_auto_back_and_forth yes
+
+# kill focused window
+bindsym $mod+q kill
+#bindsym $mod+Shift+Q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+H move left
+bindsym $mod+Shift+J move down
+bindsym $mod+Shift+K move up
+bindsym $mod+Shift+L move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+plus split h
+
+# split in vertical orientation
+bindsym $mod+underscore split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+x layout tabbed
+bindsym $mod+z layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+d focus child
+
+############################################
+########## CHANGING BORDER STYLE ###########
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+
+############################################
+####  Start dmenu(a program launcher)  #####
+#bindsym $mod+p exec --no-startup-id "j4-dmenu-desktop --dmenu='dmenu -i -b -fn '-*-profont-*-*-*-*-11-*-*-*-*-*-*-*''"
+#bindsym $mod+p exec --no-startup-id dmenu_run -b  -fn '-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*' -nb '#111111' -nf '#555555' -sb '#111111' -sf '#aadb0f'
+bindsym $mod+p exec --no-startup-id dmenu_run -b  -fn '-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*' -nb "#101010" -nf "#5f5f5f" -sb "#191919" -sf "#b72f62" -b
+
+
+############################################
+########## Switch to workspace #############
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+
+# move focused container to workspace
+bindsym $mod+Shift+exclam move container to workspace $WS1
+bindsym $mod+Shift+at move container to workspace $WS2
+bindsym $mod+Shift+numbersign move container to workspace $WS3
+bindsym $mod+Shift+dollar move container to workspace $WS4
+bindsym $mod+Shift+percent move container to workspace $WS5
+bindsym $mod+Shift+asciicircum move container to workspace $WS6
+bindsym $mod+Shift+ampersand move container to workspace $WS7
+bindsym $mod+Shift+asterisk move container to workspace $WS8
+bindsym $mod+Shift+parenleft move container to workspace $WS9
+bindsym $mod+Shift+parenright move container to workspace $WS0
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+R restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+E exit
+
+
+############################################
+############ RESAZE WINDOWS ################
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt 
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+############################################
+############### WINDOW CONTROL #############
+
+#Float
+#          xprop | grep -i 'class'         #
+## Float everything
+#for_window [class="[.]*"] floating enable
+#for_window [class=""] floating enable
+for_window [class="Guake"] floating enable
+for_window [class="Remmina"] floating enable
+for_window [class="Transmission-gtk"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="viewnoir"] floating enable
+for_window [class="gimp*"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="gimp"] floating enable
+for_window [title="Downloading Package Files"] floating disable
+for_window [class="Qalculate"] floating enable
+for_window [title="About Mozilla Firefox"] floating enable
+#for_window [class="Wine"] floating enable
+
+############################################
+############## Autostart ###################
+exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id xpad
+exec --no-startup-id /usr/bin/guake
+
+############################################
+########### Assignment to desk #############
+#assign [class="Deadbeef"]  $wsf01
+assign [class="URxvt"]  $ws1
+assign [class="Firefox"]  $ws2
+assign [class="Transmission-gtk"]  $ws2
+assign [class="QtCreator"]  $ws3
+assign [class="Eclipse"]  $ws3
+assign [class="Thunar"]  $ws4
+assign [class="subl"]  $ws5
+assign [class="Subl3"]  $ws5
+assign [class="Viewnoir"]  $ws5
+assign [class="Gimp"]  $ws6
+assign [class="Dia"]  $ws6
+assign [class="Inkscape"]  $ws6
+assign [class="Blender"]  $ws6
+assign [class="Keepassx"]  $ws7
+assign [class="Keepnote"]  $ws7
+assign [class="Vlc"]    $ws8
+assign [class="Remmina"]  $ws9
+assign [class="Wireshark"]  $ws9
+assign [class="Deadbeef"]  $wsf01
+#assign [class="Skype"]  $wsf02
+assign [class="Thunderbird"]  $wsf03
+
+############################################
+###########  ADDED KEY BINDINGS  ###########
+bindsym $MOD+Return exec --no-startup-id urxvt
+bindsym $MOD+SHIFT+f exec thunar
+bindsym $mod+w exec firefox
+bindsym $mod+e exec subl
+bindsym Mod1+l exec i3lock -i $HOME/wall/TF2_2.png
+bindsym Mod1+e exec thunderbird
+bindsym $mod+i exec urxvt -e vim
+bindsym $MOD+SHIFT+t exec urxvt -e htop
+bindsym $MOD+SHIFT+p exec scrot
+
+############################################
+################### Exit ###################
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/bin/i3exit shutdown, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode  "default"
+}
+bindsym $mod+Shift+Q mode "$mode_system"
+
+# VOLUME ADJUSTMENT
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
+bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+
+
+############################################
+################## Colors ##################
+# class                 border  backgr. text    indicator
+client.focused          $fore1  $fore1  $back1  $back2
+client.focused_inactive $back1  $back1  $fore2  $back2
+client.unfocused        $back2  $back1  $fore2  $back2
+client.urgent           $fore1  $fore1  $back2  $back2
+client.background       $back2
+############################################
+
+
+############################################
+################# i3bar ####################
+
+
+bar {
+
+        id bar-1
+        i3bar_command       /usr/bin/i3bar
+        status_command      ~/.i3/conky.sh
+        tray_output         none
+        position            top
+        mode                dock
+        font pango:         Inconsolata 8
+        strip_workspace_numbers yes
+        binding_mode_indicator yes
+
+        colors {
+                  background          #101010
+                  statusline          #605c5a
+                 	focused_workspace   #101010 #101010 #b72f62
+                  active_workspace    #5f5f5f #101010 #101010
+                  inactive_workspace  #101010 #101010 #5f5f5f
+                  urgent_workspace    #2e3436 #9a878f
+                }
+}
