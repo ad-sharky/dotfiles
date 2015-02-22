@@ -1,0 +1,36 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+# Update interval in seconds
+update_interval 2.0
+total_run_times 0
+override_utf8_locale yes
+
+TEXT
+
+[
+	# CPU temperature:
+{"full_text":"CPU","color":"\#b72f62","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${acpitemp}<45}${acpitemp}°C","color":"\#7996a9","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${acpitemp}<55}${acpitemp}°C","color":"\#b27d12","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${acpitemp}>=55}${acpitemp}°C","color":"\#802828","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${endif}${endif}${endif}"},\
+# { "full_text" : "HD" , "color" : "\#7996a9" } ,
+# { "full_text" : "home: ${fs_free /home}/${fs_size /home}  root: ${fs_free /}/${fs_size /}" } , 
+{ "full_text" : "Ram" , "color" : "\#b492b6" } ,
+{ "full_text" : "${mem}" },
+{ "full_text" : "" , "color" : "\#b72f62" } ,
+{ "full_text" : "${wireless_essid wlp4s0}(${wireless_link_qual wlp4s0}/${wireless_link_qual_max wlp4s0})" } ,
+	# Battery:
+{"full_text":"","color":"\#b72f62","separator":false,"separator_block_width":6},\
+{"full_text" : "[$battery_percent%]$battery_time", "color" : ${if_match $battery_percent>60}"\#7996a9"${else}"\#abab00"${endif}, "icon":"/home/ad/bin/icons/bat_full_01.xbm",  "icon_color": ${if_match $battery_percent>60}"\#236C93"${else}"\#abab00"${endif}},
+	# Date:
+  {"full_text":"${time %D}", "color" : "\#b492b6","separator":false,"separator_block_width":6},\
+	# Time:
+  {"full_text":"${time %H:%M:%S}", "color" : "\#b492b6","separator":false}\
+],
